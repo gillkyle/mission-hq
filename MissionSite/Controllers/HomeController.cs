@@ -13,6 +13,13 @@ namespace MissionSite.Controllers
             return View();
         }
 
+        public ActionResult Mission()
+        {
+            ViewBag.Message = "Find Missions from around the world and learn more about them.";
+
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

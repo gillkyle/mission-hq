@@ -1,0 +1,32 @@
+﻿body {
+    font-family: 'Exo 2', sans-serif;
+}
+.jumbotron {
+    background-image: url("https://images.unsplash.com/photo-1502641121493-741de085b4b7?auto=format&fit=crop&w=1482&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
+    background-size: cover;
+    background-position: center;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.jumbo-header {
+    color: #fff;
+}
+.custom-nav {
+    background-color: #fff;
+    color: #555;
+    border-bottom: 1px solid #ccc;
+}
+.navbar-brand:hover, .navbar-inverse .navbar-nav > li > a:hover {
+    color: #333 !important;
+}
+.cta {
+    background-color: transparent;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+}
+.cta:hover {
+    background-color: rgba(240,240,240,0.5);
+    border: 2px solid #ccc;
+}

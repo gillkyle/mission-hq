@@ -13,5 +13,10 @@ namespace MissionSite.Controllers
         {
             return View();
         }
+
+        public ActionResult Details()
+        {
+            return View();
+        }
     }
 }

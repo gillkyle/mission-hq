@@ -15,7 +15,13 @@ namespace MissionSite.Controllers
         }
 
         public ActionResult Details()
+        { 
+            return View();
+        }
+
+        public ActionResult FAQ(string junk, string name)
         {
+            ViewBag.missionName = name;
             return View();
         }
     }

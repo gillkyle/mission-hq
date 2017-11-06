@@ -150,6 +150,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MissionController.cs" />
+    <Compile Include="Controllers\MissionsController.cs" />
+    <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\ResponsesController.cs" />
+    <Compile Include="DAL\MissionHqContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +202,21 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Mission.cshtml" />
     <Content Include="Views\Mission\FAQ.cshtml" />
+    <Content Include="Views\Missions\Create.cshtml" />
+    <Content Include="Views\Missions\Delete.cshtml" />
+    <Content Include="Views\Missions\Details.cshtml" />
+    <Content Include="Views\Missions\Edit.cshtml" />
+    <Content Include="Views\Missions\Index.cshtml" />
+    <Content Include="Views\Questions\Create.cshtml" />
+    <Content Include="Views\Questions\Delete.cshtml" />
+    <Content Include="Views\Questions\Details.cshtml" />
+    <Content Include="Views\Questions\Edit.cshtml" />
+    <Content Include="Views\Questions\Index.cshtml" />
+    <Content Include="Views\Responses\Create.cshtml" />
+    <Content Include="Views\Responses\Delete.cshtml" />
+    <Content Include="Views\Responses\Details.cshtml" />
+    <Content Include="Views\Responses\Edit.cshtml" />
+    <Content Include="Views\Responses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

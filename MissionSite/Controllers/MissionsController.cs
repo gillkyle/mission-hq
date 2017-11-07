@@ -18,6 +18,7 @@ namespace MissionSite.Controllers
         // GET: Missions
         public ActionResult Index()
         {
+            ViewBag.MissionNames = db.Missions.ToList();
             return View(db.Missions.ToList());
         }
 
@@ -62,6 +63,7 @@ namespace MissionSite.Controllers
         // GET: Missions/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.MissionNames = db.Missions.ToList();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

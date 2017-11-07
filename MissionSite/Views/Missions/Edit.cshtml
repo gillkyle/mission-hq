@@ -21,6 +21,10 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MissionName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MissionName, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(
+                m => m.MissionName,
+                new SelectList(ViewBag.MissionNames, "MissionId", "MissionName")
+            )
             </div>
         </div>
 

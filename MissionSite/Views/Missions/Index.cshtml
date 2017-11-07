@@ -4,7 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    @Html.DropDownList(
+        "MissionName",
+        new SelectList(ViewBag.MissionNames, "MissionId", "MissionName"),
+        new { onchange = @"window.location.href = '/Missions/Details/' + this.value;" }
+    )
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")

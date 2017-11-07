@@ -12,7 +12,11 @@ namespace MissionSite.Models
     {
         [Key]
         public int QuestionId { get; set; }
+
+        [ForeignKey("Mission")]
         public int MissionId { get; set; }
+        public virtual Mission Mission { get; set; }
+
         public String QuestionDescription { get; set; }
         public DateTime QuestionDate{ get; set; }
         public String QuestionAuthor{ get; set; }

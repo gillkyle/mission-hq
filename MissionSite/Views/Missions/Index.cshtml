@@ -3,74 +3,20 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 text-right" style="font-size: 24px">Find a mission to learn more: </div>
+        <div class="col-md-6">
+            @using (Html.BeginForm())
+            {
+                @Html.DropDownList(
+                "MissionName",
+                new SelectList(ViewBag.MissionNames, "MissionId", "MissionName"),
+                "-- Select a Mission --",
+                new { onchange = @"window.location.href = '/Missions/Details/' + this.value;", @class = "form-control" }
+            )
+            }
+        </div>
+    </div>
+</div>
 
-@using (Html.BeginForm())
-{
-    @Html.DropDownList(
-        "MissionName",
-        new SelectList(ViewBag.MissionNames, "MissionId", "MissionName"),
-        new { onchange = @"window.location.href = '/Missions/Details/' + this.value;" }
-    )
-}
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MissionName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MissionPresident)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MissionAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MissionPrimaryLanguage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MissionClimate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MissionDominantReligion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MissionFlagURL)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MissionName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MissionPresident)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MissionAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MissionPrimaryLanguage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MissionClimate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MissionDominantReligion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MissionFlagURL)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MissionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MissionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MissionId })
-        </td>
-    </tr>
-}
-
-</table>

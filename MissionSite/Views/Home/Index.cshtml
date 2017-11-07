@@ -6,7 +6,7 @@
     <div class="jumbo-header">
         <h1>Mission Headquarters</h1>
         <p class="lead">Ask questions and find information about missions of the world</p>
-        <p>@Html.ActionLink("FIND YOUR MISSION", "Mission", "Home", null, new { @class = "btn btn-primary cta" })</p>
+        <p>@Html.ActionLink("FIND YOUR MISSION", "Index", "Missions", null, new { @class = "btn btn-primary cta" })</p>
     </div>
 </div>
 
@@ -19,21 +19,21 @@
             <p>
                 Mission HQ has information about missions all over the world. Learn about local customs, food, weather, and more.
             </p>
-            <p>@Html.ActionLink("Learn about your Mission", "Mission", "Home", null, new { @class = "btn btn-default" })</p>
+            <p>@Html.ActionLink("Learn about your Mission", "Index", "Missions", null, new { @class = "btn btn-default" })</p>
         </div>
         <div class="col-md-4">
             <h2>
                 <i class="fa fa-question-circle"></i> Ask
             </h2>  
             <p>Find out about questions you have about your mission by posting questions that can be answered by other users and returned missionaries.</p>
-            <p>@Html.ActionLink("Ask about your mission", "Mission", "Home", null, new { @class = "btn btn-default" })</p>
+            <p>@Html.ActionLink("Ask about your mission", "Index", "Missions", null, new { @class = "btn btn-default" })</p>
         </div>
         <div class="col-md-4">
             <h2>
                 <i class="fa fa-check-circle"></i> Help Out
             </h2>  
             <p>Help others understand more about their mission by answering questions about the mission you served in.</p>
-            <p>@Html.ActionLink("Answer questions", "Mission", "Home", null, new { @class = "btn btn-default" })</p>
+            <p>@Html.ActionLink("Answer questions", "Index", "Missions", null, new { @class = "btn btn-default" })</p>
         </div>
     </div>
 

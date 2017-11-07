@@ -38,31 +38,30 @@
 
     <h3>Frequently Asked Questions</h3>
     <div class="row">
-        <div class="col-md-12 question-section">
-            <div class="question">What kind of weather can a new missionary expect?</div>
-            <div class="answer"><i class="glyphicon glyphicon-chevron-right"></i> Nothing torrential in terms of rain. Rivers occasionally turned to blood and frogs would rain from sky.</div>
-            <div class="answer"><i class="glyphicon glyphicon-chevron-right"></i> I loved the weather, preparation days in sandals are a big plus!</div>
-            <form>
-                <div class="form-group">
-                    <textarea class="form-control" for="answer" placeholder="Types your response..."></textarea>
+        @foreach (var question in ViewBag.Questions)
+        {
+            if (Model.MissionId == @question.MissionId)
+            {
+                <div class="col-md-12 question-section">
+                    <div class="question">@question.QuestionDescription</div>
+                    @foreach (var response in ViewBag.Responses)
+                    {
+                        if (@response.QuestionId == @question.QuestionId)
+                        {
+                            <div class="answer"><i class="glyphicon glyphicon-chevron-right"></i> @response.ResponseDescription</div>
+                        }
+                    }
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" for="answer" placeholder="Types your response..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <button class="btn btn-primary " name="submit" type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-12 question-section">
-            <div class="question">Why don't my packages ever arrive? My missionary has been out for 4 months as hasn't received a single one.</div>
-            <div class="answer"><i class="glyphicon glyphicon-chevron-right"></i> Most packages travel via the pony express which for its time was great, but now takes (on average) between 5 and 7 months for mail to arrive.</div>
-            <form>
-                <div class="form-group">
-                    <textarea class="form-control" for="answer" placeholder="Types your response..."></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary " name="submit" type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
+            }
+        }
     </div>
 
     <h3>Post your own Question</h3>
@@ -86,70 +85,3 @@
         </div>
     </div>
 </div>
-
-<div>
-    <h4>Mission</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MissionName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MissionName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MissionPresident)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MissionPresident)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MissionAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MissionAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MissionPrimaryLanguage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MissionPrimaryLanguage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MissionClimate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MissionClimate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MissionDominantReligion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MissionDominantReligion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MissionFlagURL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MissionFlagURL)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MissionId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

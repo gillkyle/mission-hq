@@ -25,6 +25,9 @@ namespace MissionSite.Controllers
         // GET: Missions/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Questions = db.Questions.ToList();
+            ViewBag.Responses = db.Responses.ToList();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

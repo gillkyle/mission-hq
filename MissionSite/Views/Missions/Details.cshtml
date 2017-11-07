@@ -13,26 +13,20 @@
         </ol>
     </nav>
     <h3>@Html.DisplayFor(m => m.MissionName) Mission</h3>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <h4>Mission Info</h4>
-                <h5>Mission President: @Html.DisplayFor(m => m.MissionPresident) </h5>
-                <h5>Mission Address: @Html.DisplayFor(m => m.MissionAddress)</h5>
-            </div>
+    <div class="row card-set">
+        <div class="flex-card">
+            <h4>Mission Info</h4>
+            <h5>Mission President: @Html.DisplayFor(m => m.MissionPresident) </h5>
+            <h5>Mission Address: @Html.DisplayFor(m => m.MissionAddress)</h5>
         </div>
-        <div class="col-md-4">
-            <div class="card">
-                <h4>Culture</h4>
-                <h5>Dominant Religion: @Html.DisplayFor(m => m.MissionDominantReligion)</h5>
-                <h5>Flag: <img class="img-thumbnail" style="width: 25%; height: 25%" src=@Html.DisplayFor(m => m.MissionFlagURL) /></h5>
-            </div>
+        <div class="flex-card">
+            <h4>Culture</h4>
+            <h5>Dominant Religion: @Html.DisplayFor(m => m.MissionDominantReligion)</h5>
+            <h5>Flag: <img class="img-thumbnail" style="width: 25%; height: 25%" src=@Html.DisplayFor(m => m.MissionFlagURL) /></h5>
         </div>
-        <div class="col-md-4">
-            <div class="card">
-                <h4>Geography</h4>
-                <h5>Climate: @Html.DisplayFor(m => m.MissionClimate)</h5>
-            </div>
+        <div class="flex-card">
+            <h4>Geography</h4>
+            <h5>Climate: @Html.DisplayFor(m => m.MissionClimate)</h5>
         </div>
     </div>
 
@@ -48,7 +42,7 @@
                     {
                         if (@response.QuestionId == @question.QuestionId)
                         {
-                            <div class="answer"><i class="glyphicon glyphicon-chevron-right"></i> @response.ResponseDescription</div>
+                            <div class="answer"><i class="glyphicon glyphicon-chevron-right"></i> @response.ResponseDescription <span class="answer-details">@response.ResponseAuthor - @response.ResponseDate</span></div>
                         }
                     }
                     <form>
@@ -67,21 +61,44 @@
     <h3>Post your own Question</h3>
     <div class="row">
         <div class="col-md-12">
-            <form>
-                <div class="form-group">
-                    <!-- Name field -->
-                    <label class="control-label " for="name">Name</label>
-                    <input class="form-control" id="name" name="name" type="text" />
+            @using (Html.BeginForm("Create", "Questions"))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @* Should also be hidden with the value from the model's MissionId *@
+                    @Html.HiddenFor(model => model.MissionId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MissionId, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.Label("Name", htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.Editor("QuestionAuthor", new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.QuestionAuthor, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+
+                    @* Textarea box for the actual question *@
+                    <div class="form-group">
+                        @Html.Label("Question", htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.TextArea("QuestionDescription", new { @class = "form-control"} )
+                            @*@Html.ValidationMessageFor(model => model.QuestionDescription, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+
+                    @* Hidden field with timestamp for value *@
+                    @Html.Hidden("QuestionDate", "12/12/2012 12:00:00pm", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.QuestionDate, "", new { @class = "text-danger" })*@
+
+                    <div class="form-group">
+                        <div class="">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <!-- Question field -->
-                    <label class="control-label " for="question">Question</label>
-                    <textarea class="form-control" cols="40" id="question" name="question" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary " name="submit" type="submit">Submit</button>
-                </div>
-            </form>
+            }
         </div>
     </div>
 </div>

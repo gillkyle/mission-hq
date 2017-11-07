@@ -53,7 +53,7 @@ namespace MissionSite.Controllers
             {
                 db.Questions.Add(question);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("/Missions/Details/" + question.MissionId);
             }
 
             return View(question);

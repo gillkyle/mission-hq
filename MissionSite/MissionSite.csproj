@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="Models\Mission.cs" />
     <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\MissionQuestionResponse.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

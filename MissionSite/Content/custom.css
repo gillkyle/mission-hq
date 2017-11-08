@@ -56,6 +56,9 @@ textarea {
     color: rgba(0,0,0,0.35);
     font-style: italic;
 }
+.contact-form {
+    margin: 0 15px 0 15px;
+}
 
 /* Bootstrap overrids */
 .row {

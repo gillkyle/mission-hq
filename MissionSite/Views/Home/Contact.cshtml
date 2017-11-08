@@ -16,4 +16,43 @@
         <strong>Support:</strong>   <a href="mailto:Support@missionhq.com">Support@missionhq.com</a><br />
         <strong>Marketing:</strong> <a href="mailto:Marketing@missionhq.com">Marketing@missionhq.com</a>
     </address>
+
+    @using (Html.BeginForm("Message", "Send"))
+            {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal contact-form">
+            @*
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.MissionId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MissionId, "", new { @class = "text-danger" })
+            *@
+            <div class="form-group">
+                @Html.Label("Name", htmlAttributes: new { @class = "control-label" })
+                <div class="">
+                    @Html.Editor("MessageAuthor", new { htmlAttributes = new { @class = "form-control" } })
+                    @*@Html.ValidationMessageFor(model => model.QuestionAuthor, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            @* Textarea box for question *@
+            <div class="form-group">
+                @Html.Label("Message", htmlAttributes: new { @class = "control-label" })
+                <div class="">
+                    @Html.TextArea("MessageBody", new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(model => model.QuestionDescription, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            @* Hidden field with timestamp for value *@
+            @Html.Hidden("QuestionDate", "12/12/2012 12:00:00pm", new { htmlAttributes = new { @class = "form-control" } })
+            @*@Html.ValidationMessageFor(model => model.QuestionDate, "", new { @class = "text-danger" })*@
+
+            <div class="form-group">
+                <div class="">
+                    <input type="submit" value="Send" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
 </div>

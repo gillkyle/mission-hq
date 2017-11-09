@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -21,7 +22,10 @@ namespace MissionSite.Models
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
+        [Required, DisplayName("Question Description"), StringLength(500, MinimumLength = 3, ErrorMessage = "Question must be between 3 and 500 characters long."),
+            RegularExpression(@"^[A-Z][a-zA-Z.\-\/\\()#\d ]*$", ErrorMessage = "Capitalize question. -().#/\\ symbols allowed only.")]
         public String QuestionDescription { get; set; }
+        [DisplayName("Question Date")]
         public DateTime QuestionDate{ get; set; }
     }
 }

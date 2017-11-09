@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace MissionSite.Models
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
+        [Required, DisplayName("Response"), StringLength(750, MinimumLength = 3, ErrorMessage = "Response must be between 3 and 750 characters long."),
+            RegularExpression(@"^[A-Z][a-zA-Z.\-\/\\()#\d ]*$", ErrorMessage = "Capitalize response. -().#/\\ symbols allowed only.")]
         public String ResponseDescription { get; set; }
     }
 }

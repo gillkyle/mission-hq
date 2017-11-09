@@ -23,6 +23,5 @@ namespace MissionSite.Models
 
         public String QuestionDescription { get; set; }
         public DateTime QuestionDate{ get; set; }
-        public String QuestionAuthor{ get; set; }
     }
 }

@@ -47,8 +47,9 @@ namespace MissionSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ResponseId,QuestionId,ResponseDescription,ResponseAuthor,ResponseDate")] Response response)
+        public ActionResult Create([Bind(Include = "ResponseId, QuestionId,ResponseDescription,UserId")] Response response)
         {
+
             if (ModelState.IsValid)
             {
                 db.Responses.Add(response);

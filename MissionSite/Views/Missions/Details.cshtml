@@ -58,12 +58,16 @@
                         </div>
                     </div>
                     <div >
-                        <form>
+                        <form id="responseForm" method="post" action="~/Responses/Create">
+                            @Html.AntiForgeryToken()
+                            <input name="questionID" type="number" value=@question.QuestionId class="hidden"/>
+                            <input name="UserId" type="number" value=2 class="hidden" />
                             <div class="form-group">
-                                <textarea style="display: none" id='@question.QuestionId+form1' class="form-control" for="answer" placeholder="Type your response..."></textarea>
+                                <textarea input name ="ResponseDescription" style="display: none" id='@question.QuestionId+form1' class="form-control" for="answer" placeholder="Type your response..."></textarea>
                             </div>
                             <div class="form-group">
-                                <button style="display: none" id='@question.QuestionId+form2' class="btn btn-primary " name="submit" type="submit">Post Your Response</button>
+                                <input type="submit" value="Post Your Response" button style="display: none" id='@question.QuestionId+form2' class="btn btn-primary" />
+                                <!--button style="display: none" id='@question.QuestionId+form2' class="btn btn-primary " name="submit" input type="submit">Post Your Response</!--button> -->
                             </div>
                         </form>
                     </div>

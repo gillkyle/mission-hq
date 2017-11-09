@@ -11,113 +11,107 @@ using MissionSite.Models;
 
 namespace MissionSite.Controllers
 {
-    public class MissionsController : Controller
+    public class UsersController : Controller
     {
         private MissionHqContext db = new MissionHqContext();
 
-        // GET: Missions
+        // GET: Users
         public ActionResult Index()
         {
-            ViewBag.MissionNames = db.Missions.ToList();
-            return View(db.Missions.ToList());
+            return View(db.Users.ToList());
         }
 
-        // GET: Missions/Details/5
+        // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
-            ViewBag.Questions = db.Questions.ToList();
-            ViewBag.Responses = db.Responses.ToList();
-            ViewBag.Users = db.Users.ToList();
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mission mission = db.Missions.Find(id);
-            if (mission == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(mission);
+            return View(user);
         }
 
-        // GET: Missions/Create
+        // GET: Users/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Missions/Create
+        // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MissionId,MissionName,MissionPresident,MissionAddress,MissionPrimaryLanguage,MissionClimate,MissionDominantReligion,MissionFlagURL")] Mission mission)
+        public ActionResult Create([Bind(Include = "UserId,UserEmail,UserPassword,UserFirstName,UserLastName")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Missions.Add(mission);
+                db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(mission);
+            return View(user);
         }
 
-        // GET: Missions/Edit/5
+        // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
-            ViewBag.MissionNames = db.Missions.ToList();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mission mission = db.Missions.Find(id);
-            if (mission == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(mission);
+            return View(user);
         }
 
-        // POST: Missions/Edit/5
+        // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MissionId,MissionName,MissionPresident,MissionAddress,MissionPrimaryLanguage,MissionClimate,MissionDominantReligion,MissionFlagURL")] Mission mission)
+        public ActionResult Edit([Bind(Include = "UserId,UserEmail,UserPassword,UserFirstName,UserLastName")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(mission).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(mission);
+            return View(user);
         }
 
-        // GET: Missions/Delete/5
+        // GET: Users/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mission mission = db.Missions.Find(id);
-            if (mission == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(mission);
+            return View(user);
         }
 
-        // POST: Missions/Delete/5
+        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Mission mission = db.Missions.Find(id);
-            db.Missions.Remove(mission);
+            User user = db.Users.Find(id);
+            db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

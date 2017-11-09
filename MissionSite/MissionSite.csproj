@@ -153,6 +153,7 @@
     <Compile Include="Controllers\MissionsController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Controllers\ResponsesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\MissionHqContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -160,6 +161,7 @@
     <Compile Include="Models\Mission.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +219,11 @@
     <Content Include="Views\Responses\Details.cshtml" />
     <Content Include="Views\Responses\Edit.cshtml" />
     <Content Include="Views\Responses\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

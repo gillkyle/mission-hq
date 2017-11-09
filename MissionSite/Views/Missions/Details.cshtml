@@ -42,7 +42,13 @@
                     {
                         if (@response.QuestionId == @question.QuestionId)
                         {
-                            <div class="answer"><i class="glyphicon glyphicon-chevron-right"></i> @response.ResponseDescription <span class="answer-details">@response.ResponseAuthor - @response.ResponseDate</span></div>
+                            foreach (var user in ViewBag.Users)
+                            {
+                                if (response.UserId == user.UserId)
+                                {
+                                    <div class="answer"><i class="glyphicon glyphicon-chevron-right"></i> @response.ResponseDescription <span class="answer-details">@user.UserFirstName @user.UserLastName</span></div>
+                                }
+                            }
                         }
                     }
                     <form>

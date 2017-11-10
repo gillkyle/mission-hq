@@ -54,7 +54,8 @@ namespace MissionSite.Controllers
             {
                 db.Responses.Add(response);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Question question = db.Questions.Find(response.QuestionId);
+                return RedirectToAction("Details", "Missions", new { id = question.MissionId });
             }
 
             return View(response);

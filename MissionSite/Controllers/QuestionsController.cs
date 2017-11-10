@@ -47,7 +47,7 @@ namespace MissionSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "QuestionId,MissionId,QuestionDescription,QuestionDate")] Question question)
+        public ActionResult Create([Bind(Include = "QuestionId,MissionId,QuestionDescription")] Question question)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace MissionSite.Controllers
             return View(question);
         }
 
-        // GET: Questions/Edit/5
+        /* // GET: Questions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,7 +79,7 @@ namespace MissionSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "QuestionId,MissionId,QuestionDescription,QuestionDate")] Question question)
+        public ActionResult Edit([Bind(Include = "QuestionId,MissionId,QuestionDescription")] Question question)
         {
             if (ModelState.IsValid)
             {
@@ -123,6 +123,6 @@ namespace MissionSite.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        } */
     }
 }

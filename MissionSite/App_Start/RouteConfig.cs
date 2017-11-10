@@ -16,7 +16,7 @@ namespace MissionSite
             routes.MapRoute(
                 name: "Mission",
                 url: "Mission/{action}/{name}",
-                defaults: new { controller = "Mission", action = "FAQ", name = UrlParameter.Optional }
+                defaults: new { controller = "Mission", action = "Details", name = UrlParameter.Optional }
             );
 
             routes.MapRoute(

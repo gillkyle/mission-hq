@@ -22,8 +22,7 @@ namespace MissionSite.Models
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
-        [Required, DisplayName("Response"), StringLength(750, MinimumLength = 3, ErrorMessage = "Response must be between 3 and 750 characters long."),
-            RegularExpression(@"^[A-Z].*$", ErrorMessage = "Capitalize response")]
+        [Required, DisplayName("Response"), StringLength(750, MinimumLength = 1, ErrorMessage = "Response must be less than 750 characters long.")]
         public String ResponseDescription { get; set; }
     }
 }

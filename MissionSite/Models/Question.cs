@@ -25,7 +25,5 @@ namespace MissionSite.Models
         [Required, DisplayName("Question Description"), StringLength(500, MinimumLength = 3, ErrorMessage = "Question must be between 3 and 500 characters long."),
             RegularExpression(@"^[A-Z].*$", ErrorMessage = "Capitalize question.")]
         public String QuestionDescription { get; set; }
-        [DisplayName("Question Date")]
-        public DateTime QuestionDate{ get; set; }
     }
 }

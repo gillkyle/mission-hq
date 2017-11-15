@@ -13,32 +13,32 @@ namespace MissionSite.Controllers
 {
     public class MissionsController : Controller
     {
-        private MissionHqContext db = new MissionHqContext();
+        private MissionHqContext db = new MissionHqContext(); //creates database
 
         // GET: Missions
         public ActionResult Index()
         {
-            ViewBag.MissionNames = db.Missions.ToList();
-            return View(db.Missions.ToList());
+            ViewBag.MissionNames = db.Missions.ToList(); //creates list of mission objects
+            return View(db.Missions.ToList()); //passes list to view
         }
 
         // GET: Missions/Details/5
         public ActionResult Details(int? id)
         {
-            ViewBag.Questions = db.Questions.ToList();
-            ViewBag.Responses = db.Responses.ToList();
-            ViewBag.Users = db.Users.ToList();
+            ViewBag.Questions = db.Questions.ToList(); //creates list of question objects
+            ViewBag.Responses = db.Responses.ToList(); //creates list of responses object
+            ViewBag.Users = db.Users.ToList(); //creates list of users
 
-            if (id == null)
+            if (id == null) //makes sure a mission is select via a number
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Mission mission = db.Missions.Find(id);
-            if (mission == null)
+            if (mission == null) //makes sure mission exists
             {
                 return HttpNotFound();
             }
-            return View(mission);
+            return View(mission); //passes mission object to strongly typed view
         }
 
         // GET: Missions/Create
@@ -54,30 +54,30 @@ namespace MissionSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MissionId,MissionName,MissionPresident,MissionAddress,MissionPrimaryLanguage,MissionClimate,MissionDominantReligion,MissionFlagURL")] Mission mission)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) //ensures binding completed successfully and model is valid
             {
                 db.Missions.Add(mission);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.SaveChanges(); //saves to database
+                return RedirectToAction("Index"); //returns to index action method
             }
 
-            return View(mission);
+            return View(mission); //if model was invalid, returns to create view and shows validation errors
         }
 
         // GET: Missions/Edit/5
         public ActionResult Edit(int? id)
         {
-            ViewBag.MissionNames = db.Missions.ToList();
-            if (id == null)
+            ViewBag.MissionNames = db.Missions.ToList(); //creates list of mission objects
+            if (id == null) //ensures mission id was included
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Mission mission = db.Missions.Find(id);
-            if (mission == null)
+            if (mission == null) //makes sure mission exists
             {
                 return HttpNotFound();
             }
-            return View(mission);
+            return View(mission); //returns to edit view is mission does not exist
         }
 
         // POST: Missions/Edit/5
@@ -87,11 +87,11 @@ namespace MissionSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MissionId,MissionName,MissionPresident,MissionAddress,MissionPrimaryLanguage,MissionClimate,MissionDominantReligion,MissionFlagURL")] Mission mission)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) //ensures model state is valid
             {
-                db.Entry(mission).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.Entry(mission).State = EntityState.Modified; //indicates object has been modified
+                db.SaveChanges(); //saves/updates changes to database
+                return RedirectToAction("Index"); //returns to index method
             }
             return View(mission);
         }
@@ -99,16 +99,16 @@ namespace MissionSite.Controllers
         // GET: Missions/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (id == null) //ensures mission id was passed
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Mission mission = db.Missions.Find(id);
-            if (mission == null)
+            if (mission == null) //ensures message exists
             {
                 return HttpNotFound();
             }
-            return View(mission);
+            return View(mission); //passes mission to view
         }
 
         // POST: Missions/Delete/5
@@ -116,10 +116,10 @@ namespace MissionSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Mission mission = db.Missions.Find(id);
-            db.Missions.Remove(mission);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            Mission mission = db.Missions.Find(id); //finds mission via mission id
+            db.Missions.Remove(mission); //removes from database
+            db.SaveChanges(); //saves changes to database
+            return RedirectToAction("Index"); //returns to index method
         }
 
         protected override void Dispose(bool disposing)

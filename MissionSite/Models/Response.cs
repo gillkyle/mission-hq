@@ -23,6 +23,6 @@ namespace MissionSite.Models
         public virtual User User { get; set; }
 
         [Required, DisplayName("Response"), StringLength(750, MinimumLength = 1, ErrorMessage = "Response must be less than 750 characters long.")]
-        public String ResponseDescription { get; set; }
+        public String ResponseDescription { get; set; } //reponse can only be 750 characters long. It's required as well
     }
 }

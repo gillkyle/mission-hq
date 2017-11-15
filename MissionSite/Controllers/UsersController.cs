@@ -24,12 +24,12 @@ namespace MissionSite.Controllers
         // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (id == null) //ensure id was passed
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             User user = db.Users.Find(id);
-            if (user == null)
+            if (user == null) //makes sure user exists in database
             {
                 return HttpNotFound();
             }
@@ -49,14 +49,14 @@ namespace MissionSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserId,UserEmail,UserPassword,UserFirstName,UserLastName")] User user)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) //ensures binding completely successfully
             {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.Users.Add(user); //adds user to database table
+                db.SaveChanges(); //saves changes
+                return RedirectToAction("Index"); //goes to index method
             }
 
-            return View(user);
+            return View(user); //returns invalid user model to view for correction
         }
 
         // GET: Users/Edit/5

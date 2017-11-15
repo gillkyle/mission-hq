@@ -17,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MissionId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MissionId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MissionId, new { htmlAttributes = new { @class = "form-control" } }) @*pulls mission id from model and allows editing*@
                 @Html.ValidationMessageFor(model => model.MissionId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.QuestionDescription, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.QuestionDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.QuestionDescription, new { htmlAttributes = new { @class = "form-control" } }) @*field for question*@
                 @Html.ValidationMessageFor(model => model.QuestionDescription, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -40,5 +40,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") @*returns to index method*@
 </div>

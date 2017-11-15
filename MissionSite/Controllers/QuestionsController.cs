@@ -18,18 +18,18 @@ namespace MissionSite.Controllers
         // GET: Questions
         public ActionResult Index()
         {
-            return View(db.Questions.ToList());
+            return View(db.Questions.ToList()); //passes list of questions to view
         }
 
         // GET: Questions/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (id == null) //ensures question number was passed
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Question question = db.Questions.Find(id);
-            if (question == null)
+            if (question == null) //ensures questions exists
             {
                 return HttpNotFound();
             }
@@ -49,15 +49,18 @@ namespace MissionSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "QuestionId,MissionId,QuestionDescription")] Question question)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) //ensures model state is valid before saving to database
             {
                 db.Questions.Add(question);
-                db.SaveChanges();
-                return Redirect("/Missions/Details/" + question.MissionId);
+                db.SaveChanges(); //saves to database
+                return Redirect("/Missions/Details/" + question.MissionId); //returns to mission details screen, using question.MissionId to grab correct mission number
             }
 
             return View(question);
         }
+
+        //the methods below are commented out because description said to not allow questions to be edited or deleted
+
 
         /* // GET: Questions/Edit/5
         public ActionResult Edit(int? id)

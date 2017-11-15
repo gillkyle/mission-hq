@@ -13,27 +13,27 @@ namespace MissionSite.Controllers
 {
     public class ResponsesController : Controller
     {
-        private MissionHqContext db = new MissionHqContext();
+        private MissionHqContext db = new MissionHqContext(); //creates new database object
 
         // GET: Responses
         public ActionResult Index()
         {
-            return View(db.Responses.ToList());
+            return View(db.Responses.ToList()); //passes list of missions to view
         }
 
         // GET: Responses/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id) //gives details on specific mission
         {
-            if (id == null)
+            if (id == null) //makes mission number was passed
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Response response = db.Responses.Find(id);
-            if (response == null)
+            if (response == null) //makes sure mission exists
             {
                 return HttpNotFound();
             }
-            return View(response);
+            return View(response); //passes reponse to strongly typed model
         }
 
         // GET: Responses/Create
@@ -50,11 +50,11 @@ namespace MissionSite.Controllers
         public ActionResult Create([Bind(Include = "ResponseId, QuestionId,ResponseDescription,UserId")] Response response)
         {
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) //ensures model state is valid
             {
                 db.Responses.Add(response);
                 db.SaveChanges();
-                Question question = db.Questions.Find(response.QuestionId);
+                Question question = db.Questions.Find(response.QuestionId); // finds question from database
                 return RedirectToAction("Details", "Missions", new { id = question.MissionId });
             }
 
@@ -68,12 +68,12 @@ namespace MissionSite.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Response response = db.Responses.Find(id);
-            if (response == null)
+            Response response = db.Responses.Find(id); 
+            if (response == null) //ensures the mission exists
             {
                 return HttpNotFound();
             }
-            return View(response);
+            return View(response); //passes model to view
         }
 
         // POST: Responses/Edit/5
@@ -81,19 +81,19 @@ namespace MissionSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ResponseId,QuestionId,ResponseDescription,ResponseAuthor,ResponseDate")] Response response)
+        public ActionResult Edit([Bind(Include = "ResponseId,QuestionId,ResponseDescription,ResponseAuthor,ResponseDate")] Response response) //binds form fields to objects
         {
             if (ModelState.IsValid)
             {
-                db.Entry(response).State = EntityState.Modified;
-                db.SaveChanges();
+                db.Entry(response).State = EntityState.Modified; //indicates model has been modified
+                db.SaveChanges(); //saves to database
                 return RedirectToAction("Index");
             }
             return View(response);
         }
 
         // GET: Responses/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id) //deletes mission by passing mission id
         {
             if (id == null)
             {
@@ -112,9 +112,9 @@ namespace MissionSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Response response = db.Responses.Find(id);
-            db.Responses.Remove(response);
-            db.SaveChanges();
+            Response response = db.Responses.Find(id); //finds reponse object using response id
+            db.Responses.Remove(response); //removes from table
+            db.SaveChanges(); //updates database
             return RedirectToAction("Index");
         }
 

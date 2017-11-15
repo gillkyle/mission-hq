@@ -20,7 +20,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model) { @*shows mission id, questions descriptions (the body of the question), and then edit, details, and delete links for the questions*@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.MissionId)

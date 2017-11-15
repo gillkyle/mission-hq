@@ -1,13 +1,13 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<div class="container">
+<div class="container"> @*this doesn't actually do anything, it just clears the form*@
     <h2>@ViewBag.Title</h2>
     <h3>@ViewBag.Message</h3>
     <address>
         1000 University Parkway<br />
         Provo, UT 84606<br />
-        <abbr title="Phone">P:</abbr>
+        <abbr title="Phone">P:</abbr> @*abbreviates phone with "P:" and shows Phone when you move the move over it*@
         801-555-4321
     </address>
     <address>
@@ -16,7 +16,7 @@
     </address>
     @using (Html.BeginForm("Message", "Send"))
     {
-        @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken() //this prevents cross site scripting
         <div class="form-horizontal contact-form">
             @*
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.Label("Subject", htmlAttributes: new { @class = "control-label" })
+                @Html.Label("Subject", htmlAttributes: new { @class = "control-label" }) @*drop down list to select the subject/type of question*@
                     @Html.DropDownList(
                         "MessageSubject",
                         ViewData["list"] as SelectList,
@@ -48,13 +48,13 @@
             <div class="form-group">
                 @Html.Label("Message", htmlAttributes: new { @class = "control-label" })
                 <div class="">
-                    @Html.TextArea("MessageBody", new { @class = "form-control" })
+                    @Html.TextArea("MessageBody", new { @class = "form-control" }) @*place for message to be sent, allows multiple lines*@
                     @*@Html.ValidationMessageFor(model => model.QuestionDescription, "", new { @class = "text-danger" })*@
                 </div>
             </div>
             <div class="form-group">
                 <div class="">
-                    @Html.ActionLink("Submit", "Contact", "Home", null, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Submit", "Contact", "Home", null, new { @class = "btn btn-danger" }) @*doesn't actually do anything right now, just returns to same page and clears fields*@
                 </div>
             </div>
         </div>

@@ -9,21 +9,21 @@
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/Missions/Index/">Missions</a></li>
-            <li class="breadcrumb-item active" aria-current="page">@Html.DisplayFor(m => m.MissionName) FAQ</li>
+            <li class="breadcrumb-item active" aria-current="page">@Html.DisplayFor(m => m.MissionName) FAQ</li> @*displays mission name, pulled from model*@
         </ol>
     </nav>
-    <h3>@Html.DisplayFor(m => m.MissionName) Mission FAQ's</h3>
+    <h3>@Html.DisplayFor(m => m.MissionName) Mission FAQ's</h3> @*displays mission name again*@
     <div class="row card-set">
         <div class="flex-card">
             <h4>Mission Info</h4>
-            <h5>Mission President: @Html.DisplayFor(m => m.MissionPresident) </h5>
-            <h5>Mission Address: @Html.DisplayFor(m => m.MissionAddress)</h5>
+            <h5>Mission President: @Html.DisplayFor(m => m.MissionPresident) </h5> @*pulls mission president name from model*@
+            <h5>Mission Address: @Html.DisplayFor(m => m.MissionAddress)</h5> @*pulls mission address from model*@
         </div>
         <div class="flex-card">
             <h4>Culture</h4>
-            <h5>Dominant Religion: @Html.DisplayFor(m => m.MissionDominantReligion)</h5>
-            <h5>Primary Language: @Html.DisplayFor(m => m.MissionPrimaryLanguage)</h5>
-            <h5>Flag: <img class="img-thumbnail" style="width: 25%; height: 25%" src=@Html.DisplayFor(m => m.MissionFlagURL) /></h5>
+            <h5>Dominant Religion: @Html.DisplayFor(m => m.MissionDominantReligion)</h5> @*pulls dominant religion from model*@
+            <h5>Primary Language: @Html.DisplayFor(m => m.MissionPrimaryLanguage)</h5> @*pulls primary language from model*@
+            <h5>Flag: <img class="img-thumbnail" style="width: 25%; height: 25%" src=@Html.DisplayFor(m => m.MissionFlagURL) /></h5> @*displays image from model, using url link as img src*@
         </div>
         <div class="flex-card">
             <h4>Geography</h4>
